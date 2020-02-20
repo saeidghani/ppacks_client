@@ -9,7 +9,7 @@ import {
 } from '../../styles/ShippingStyles/paymentMethodSectionStyles';
 import { useSelector } from 'react-redux';
 
-function paymentMethodSection({ onPaymentMethod, paymentMethodError }) {
+function PaymentMethodSection({ onPaymentMethod, paymentMethodError }) {
   const cartItems = useSelector(state => state.cart.cartItems.bags);
 
   return (
@@ -24,4 +24,4 @@ function paymentMethodSection({ onPaymentMethod, paymentMethodError }) {
   );
 }
 
-export default paymentMethodSection;
+export default PaymentMethodSection;
