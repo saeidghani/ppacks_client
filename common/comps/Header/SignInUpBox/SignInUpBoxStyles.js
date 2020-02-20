@@ -29,21 +29,3 @@ export const SignUpButton = styled(ButtonOutline)`
 export const SignOutButton = styled(ButtonOutline)`
   color: black; 
 `;
-
-export const UserBoxContainer = styled.div`
-    display: none;
-    width: 5rem;
-`;
-
-export const IconUserWrapper = styled.div`
-  border: 1px solid #000;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-
-

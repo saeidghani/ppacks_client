@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import Router from 'next/router';
 
@@ -8,14 +7,12 @@ import {
   UserName,
   SignInButton,
   SignOutButton,
-  SignUpButton,
-  UserBoxContainer,
-  IconUserWrapper
+  SignUpButton
 } from './SignInUpBoxStyles';
 import { logout } from '../../../../store/actions';
 
 
-export function SignInUpBox() {
+export default function SignInUpBox() {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
   const signOut = () => dispatch(logout());
@@ -43,16 +40,6 @@ export function SignInUpBox() {
         }
       </div>
     </SignInUpBoxContainer>
-  );
-}
-
-export function UserBox() {
-  return (
-    <UserBoxContainer>
-      <IconUserWrapper>
-        <Icon type="user" style={{ color: '#000', fontSize: '2.5rem' }}/>
-      </IconUserWrapper>
-    </UserBoxContainer>
   );
 }
 
