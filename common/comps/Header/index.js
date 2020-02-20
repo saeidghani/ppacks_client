@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { HeaderContainer, NavigationWrapper, UserAndCart } from './HeaderStyles';
 import Logo from '../Logo';
 import Navigation from '../Navigation';
-import SignInUpBox from './SignInUPBox';
+import SignInUpBox from './SignInUpBox/index';
 import CartIcon from './CartIcon';
 
 Router.onRouteChangeStart = () => {
