@@ -1,5 +1,5 @@
 export const baseUrl = process.env.NODE_ENV === 'production' ?
-  'https://ppacks-client-ja6ym14it.now.sh' : '';
+  'https://ppacks.now.sh' : '';
 
 export const homePage = baseUrl + '/';
 export const itemPage = baseUrl + '/itemPage';
