@@ -13,6 +13,7 @@ import {
 } from '../../styles/HomeStyles/ShopOnSaleSectionStyles';
 import { setItemsListDefaultFilter } from '../../store/actions';
 import TransitionSlideUp from '../../common/comps/TransitionSlideUp';
+import {itemsPage} from '../../common/urls';
 
 function ShopOnSaleSection() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function ShopOnSaleSection() {
   const handleShopOnSaleClick = () => {
     onSetItemsListDefaultFilter({shopOnSale: true});
     Router.push({
-      pathname: '/itemsPage',
+      pathname: itemsPage,
       as: '/items',
       query: { shopOnSale: true },
     });

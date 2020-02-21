@@ -11,6 +11,8 @@ import {
 } from '../../../styles/HomeStyles/SelectedBagsByBrandSectionStyles';
 import { setItemsListDefaultFilter } from '../../../store/actions';
 import { findFitBrandColor } from '../../../common/utils/findFitBrandColor';
+import {itemsPage} from '../../../common/urls';
+
 
 function TabPaneContent({ tabItems }) {
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ function TabPaneContent({ tabItems }) {
   const handleSeeAllButtonClick = () => {
     const brandId = tabItems.brandId;
     onSetItemsListDefaultFilter({ brandId });
-    Router.push({ pathname: '/itemsPage', query: { brandId } });
+    Router.push({ pathname: itemsPage, query: { brandId } });
   };
 
   return (

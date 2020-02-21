@@ -8,6 +8,8 @@ import CardContent from './CartContent';
 import useRedirectToSignInPage from '../../hooks/useRedirectToSignInPage';
 import {sm} from '../../constants/screenSizes';
 import useWindowSize from '../../hooks/useWindowSize';
+import {shippingPage} from '../../../common/urls';
+
 
 function CartDrawer() {
   const [visible, setVisible] = useState(false);
@@ -32,7 +34,7 @@ function CartDrawer() {
     if (!user) {
       redirectToSignInPage();
     } else {
-      Router.push('/shippingPage');
+      Router.push(shippingPage);
     }
   };
   return (

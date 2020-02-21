@@ -17,6 +17,7 @@ import { ButtonOutline, ButtonFilled } from '../../../../common/styled/Button';
 import useRedirectToSignInPage from '../../../../common/hooks/useRedirectToSignInPage';
 import { updateReview } from '../../../../store/actions';
 import withErrorHandler from '../../../../common/hoc/withErrorHandler';
+import {itemPage} from '../../../../common/urls';
 
 
 function Reviewer({ review }) {
@@ -71,8 +72,7 @@ function Reviewer({ review }) {
     }
   }, [isReviewOwner, updatedRating]);
 
-
-  const redirectToSignInPage = useRedirectToSignInPage(`/itemPage?itemId=${bagId}`);
+  const redirectToSignInPage = useRedirectToSignInPage(`${itemPage}?itemId=${bagId}`);
 
   const handleHelpfulClick = () => {
     let helpfulBy;

@@ -9,6 +9,7 @@ import StyledRate from '../../../../../common/styled/StyledRate';
 import { addRating, updateRating } from '../../../../../store/actions';
 import useRedirectToSignInPage from '../../../../../common/hooks/useRedirectToSignInPage';
 import withErrorHandler from '../../../../../common/hoc/withErrorHandler';
+import {itemPage} from '../../../../../common/urls';
 
 
 function UserRating() {
@@ -53,7 +54,7 @@ function UserRating() {
     }
   };
 
-  const redirectToSignInPage = useRedirectToSignInPage(`/itemPage?itemId=${bag._id}`);
+  const redirectToSignInPage = useRedirectToSignInPage(`${itemPage}?itemId=${bag._id}`);
 
   const renderUserRating = () => {
     if (user) {

@@ -15,6 +15,8 @@ import ItemCard from '../../common/comps/ItemCard';
 import SortDropdown from '../../common/comps/SortDropdown';
 import { useSelector } from 'react-redux';
 import useDefaultFilter from '../../common/hooks/useDefaultFilter';
+import {itemPage} from '../../common/urls';
+
 
 function GridItemsSection({ onSort, items, minValue, maxValue }) {
   const defaultFilter = useSelector(state => state.itemsList.defaultFilter.filter);
@@ -50,7 +52,7 @@ function GridItemsSection({ onSort, items, minValue, maxValue }) {
     if(categoryId) query.categoryId = categoryId;
     if(brandId) query.brandId = brandId;
     Router.push({
-      pathname: '/itemPage',
+      pathname: itemPage,
       as: '/item',
       query
     });

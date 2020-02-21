@@ -7,6 +7,7 @@ import { LinkFilled } from '../../common/styled/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../../store/actions';
 
+
 function ThankYou() {
   const cartItems = useSelector(state => state.cart.cartItems.bags);
   const dispatch = useDispatch();

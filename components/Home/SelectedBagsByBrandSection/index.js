@@ -15,6 +15,7 @@ import ItemCard from '../../../common/comps/ItemCard';
 import { setItemsListDefaultFilter } from '../../../store/actions';
 import TransitionSlideUp from '../../../common/comps/TransitionSlideUp';
 import useWindowSize from '../../../common/hooks/useWindowSize';
+import {itemPage} from '../../../common/urls';
 
 
 function SelectedBagsByBrandSection() {
@@ -25,7 +26,7 @@ function SelectedBagsByBrandSection() {
   const handleItemCardClick = (brandId, itemId) => {
     onSetItemsListDefaultFilter({ brandId, itemId });
     Router.push({
-      pathname: '/itemPage',
+      pathname: itemPage,
       as: '/item',
       query: { brandId, itemId },
     });

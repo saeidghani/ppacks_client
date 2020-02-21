@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { ItemCardWrapper, TabPaneContainer } from '../../../styles/HomeStyles/SelectedBagsByCategorySectionStyles';
 import ItemCard from '../../../common/comps/ItemCard';
 import { setItemsListDefaultFilter } from '../../../store/actions';
+import {itemPage} from '../../../common/urls';
+
 
 function TabPaneContent({ categoryId, items }) {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ function TabPaneContent({ categoryId, items }) {
 
   const handleItemCardClick = (itemId) => {
     Router.push({
-      pathname: '/itemPage',
+      pathname: itemPage,
       as: '/item',
       query: { categoryId, itemId },
     });

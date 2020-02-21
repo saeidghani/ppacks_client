@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setAuthRedirectPath } from '../../store/actions';
+import {signInPage} from '../urls';
 
 const useRedirectToSignInPage = (path) => {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ const useRedirectToSignInPage = (path) => {
 
   const redirectToSignInPage = () => {
     onSetAuthRedirectPath(path);
-    Router.push('/signInPage');
+    Router.push(signInPage);
   };
   return redirectToSignInPage;
 };

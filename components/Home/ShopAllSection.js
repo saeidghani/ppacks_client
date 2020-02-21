@@ -13,6 +13,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { setItemsListDefaultFilter } from '../../store/actions';
 import TransitionSlideUp from '../../common/comps/TransitionSlideUp';
+import {itemsPage} from '../../common/urls';
 
 function ShopAllSection() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function ShopAllSection() {
   const handleShopAllClick = () => {
     onSetItemsListDefaultFilter({shopAll: true});
     Router.push({
-      pathname: '/itemsPage',
+      pathname: itemsPage,
       as: '/items',
       query: { shopAll: true },
     });

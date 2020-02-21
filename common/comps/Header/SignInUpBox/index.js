@@ -10,6 +10,7 @@ import {
   SignUpButton
 } from './SignInUpBoxStyles';
 import { logout } from '../../../../store/actions';
+import {signInPage, signUpPage} from '../../../urls';
 
 
 export default function SignInUpBox() {
@@ -24,7 +25,7 @@ export default function SignInUpBox() {
           {user && user.name}
         </UserName>
         {!user &&
-        <SignInButton onClick={() => Router.push('/signInPage')}>
+        <SignInButton onClick={() => Router.push(signInPage)}>
           Sign in
         </SignInButton>}
       </div>
@@ -34,7 +35,7 @@ export default function SignInUpBox() {
           Sign Out
         </SignOutButton>}
         {!user &&
-        <SignUpButton onClick={() => Router.push('/signUpPage')}>
+        <SignUpButton onClick={() => Router.push(signUpPage)}>
           Sign up
         </SignUpButton>
         }

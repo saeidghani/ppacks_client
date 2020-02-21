@@ -20,6 +20,8 @@ import {
 } from '../../../common/constants/ids';
 import { VerticalMenuContainer } from '../../../styles/HomeStyles/HomeHeaderSectionStyles';
 import { setItemsListDefaultFilter } from '../../../store/actions';
+import {itemsPage} from '../../../common/urls';
+
 
 function VerticalMenu() {
   const dispatch = useDispatch();
@@ -28,14 +30,14 @@ function VerticalMenu() {
   const handleCategoryClick = (category) => {
     const categoryId = category.id;
     onSetItemsListDefaultFilter({ categoryId });
-    Router.push({ pathname: `/itemsPage`, query: { categoryId } });
+    Router.push({ pathname: itemsPage, query: { categoryId } });
   };
 
   const handleCategoryAndBrandClick = (category, brand) => {
     const categoryId = category.id;
     const brandId = brand.id;
     onSetItemsListDefaultFilter({ categoryId, brandId });
-    Router.push({ pathname: `/itemsPage`, query: { categoryId, brandId } });
+    Router.push({ pathname: itemsPage, query: { categoryId, brandId } });
   };
 
   const handleClick = e => {

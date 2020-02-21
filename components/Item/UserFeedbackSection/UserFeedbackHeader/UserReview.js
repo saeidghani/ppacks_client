@@ -8,6 +8,7 @@ import { StyledInput } from '../../../../common/styled/StyledInput';
 import { addReview, updateReview } from '../../../../store/actions';
 import useRedirectToSignInPage from '../../../../common/hooks/useRedirectToSignInPage';
 import withErrorHandler from '../../../../common/hoc/withErrorHandler';
+import {itemPage} from '../../../../common/urls';
 
 
 function UserReview() {
@@ -35,7 +36,7 @@ function UserReview() {
     }
   }, [bagReviews]);
 
-  const redirectToSignInPage = useRedirectToSignInPage(`/itemPage?itemId=${bag._id}`);
+  const redirectToSignInPage = useRedirectToSignInPage(`${itemPage}?itemId=${bag._id}`);
 
   const handleReviewChange = ({ currentTarget }) => {
     setReviewText(currentTarget.value);

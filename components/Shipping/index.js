@@ -16,15 +16,15 @@ import { addOrder } from '../../store/actions';
 import Spinner from '../../common/comps/Spinner';
 import withErrorHandler from '../../common/hoc/withErrorHandler';
 import useRedirectToSignInPage from '../../common/hooks/useRedirectToSignInPage';
+import {shippingPage, thankYouPage} from '../../common/urls';
+
 
 function Shipping() {
-  const token = useSelector(state => state.auth.token);
   const cartItems = useSelector(state => state.cart.cartItems.bags);
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
   const onUpdateUser = (updatedUser) => dispatch(updateUser(updatedUser));
   const onAddOrder = (newOrder) => dispatch(addOrder(newOrder));
-  const onRemoveFromCart = (bagId) => dispatch(removeFromCart(bagId));
   const [paymentMethod, setPaymentMethod] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [errors, setErrors] = useState({
@@ -32,7 +32,7 @@ function Shipping() {
     paymentMethod: false
   });
   const totalPrice = useTotalPrice(cartItems);
-  const redirectToSignInPage = useRedirectToSignInPage('/shippingPage');
+  const redirectToSignInPage = useRedirectToSignInPage(shippingPage);
 
   useEffect(() => {
     if (!user) {
@@ -83,7 +83,7 @@ function Shipping() {
     };
 
     onAddOrder(newOrder);
-    if (userAddress && paymentMethod) Router.push('/thankYouPage');
+    if (userAddress && paymentMethod) Router.push(thankYouPage);
   };
 
   if (!user) return <Spinner/>;
