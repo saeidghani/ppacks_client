@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { setItemsListDefaultFilter } from '../store/actions';
 
 function ItemsPage() {
-  const onSetItemsListDefaultFilter = filter => dispatch(setItemsListDefaultFilter(filter));
   const router = useRouter();
   const {shopAll, shopOnSale, categoryId, brandId} = router.query;
   const defaultFilter = {shopAll, shopOnSale, categoryId, brandId};

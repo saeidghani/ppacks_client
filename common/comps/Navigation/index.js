@@ -16,13 +16,13 @@ function Navigation() {
       </AnimatedButton>
       <Column>|</Column>
       <AnimatedButton lineWidth='6.5rem' >
-        <NavButton onClick={() => Router.push(aboutPage, 'about')}>
+        <NavButton onClick={() => Router.push(aboutPage)}>
           About
         </NavButton>
       </AnimatedButton>
       <Column>|</Column>
       <AnimatedButton lineWidth='7.5rem' >
-        <NavButton onClick={() => Router.push(contactPage, 'contactPage')}>
+        <NavButton onClick={() => Router.push(contactPage)}>
           Contact
         </NavButton>
       </AnimatedButton>

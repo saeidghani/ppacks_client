@@ -8,7 +8,6 @@ import SidebarSection from './SidebarSection';
 import GridItemsSection from './GridItemsSection';
 import useFetchData from '../../common/hooks/useFetchData';
 import useManageItems from './manageAndPaginateItems/useManageItems';
-import { capitalizeFirstLetter } from '../../common/utils/caseLetterMethods';
 import Spinner from '../../common/comps/Spinner';
 import withErrorHandler from '../../common/hoc/withErrorHandler';
 import useDefaultFilter from '../../common/hooks/useDefaultFilter';
