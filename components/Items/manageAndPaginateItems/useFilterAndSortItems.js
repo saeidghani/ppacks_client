@@ -17,18 +17,17 @@ export default function useFilterAndSortItems(initialItems) {
     setSortedItems(sortedItems => [...newSortedItems]);
   };
 
-
   useEffect(() => {
     setFilteredItems(initialItems);
   }, [initialItems]);
 
   useEffect(() => {
-    if(filteredItems) {
+    if (filteredItems) {
       handleSortedItems();
     }
   }, [path, order, filteredItems]);
 
-  const setSortOptions = ({path, order}) => {
+  const setSortOptions = ({ path, order }) => {
     setPath(path);
     setOrder(order);
   };
@@ -57,7 +56,7 @@ export default function useFilterAndSortItems(initialItems) {
   };
 
   useEffect(() => {
-    if(initialItems && shopOnSale) {
+    if (initialItems && shopOnSale) {
       let newFilteredItems = initialItems;
       const onSale = 'isOnSale';
       newFilteredItems = filterOnSale(newFilteredItems, onSale);
@@ -72,9 +71,13 @@ export default function useFilterAndSortItems(initialItems) {
   };
 
   const filterSize = (items, sizes) => {
-    return items.filter(bag =>
-      bag.sizes.some(s => sizes.includes(s))
-    );
+    if (sizes.length) {
+      return items.filter(bag =>
+        bag.sizes.some(s => sizes.includes(s))
+      );
+    } else {
+      return items;
+    }
   };
 
   const filterQuickDelivery = (items, deliveryDuration) => {

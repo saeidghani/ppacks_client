@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Checkbox } from 'antd';
 
 import Collapse from '../../../common/comps/Collapse';
@@ -17,7 +17,10 @@ function SizeFilter({ onSizeFilter }) {
     <Collapse title='Size'>
       <FilterOptions>
         {sizes.map(size =>
-          <div key={size.title}><Checkbox onChange={() => onSizeFilter(size.title)}>{size.title}</Checkbox>
+          <div key={size.title}>
+            <Checkbox onChange={() => onSizeFilter(size.title)}>
+              {size.title}
+            </Checkbox>
           </div>
         )}
       </FilterOptions>

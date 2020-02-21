@@ -35,7 +35,7 @@ function BrandFilter({ onBrandFilter }) {
         {brands.map(brand =>
           <div key={brand.title}>
             <Checkbox onChange={() => onBrandFilter(brand.id)}>
-              {brand.title}
+              <span>{brand.title}</span>
             </Checkbox>
           </div>
         )}

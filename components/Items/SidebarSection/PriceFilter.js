@@ -11,7 +11,7 @@ function PriceFilter({ onPriceRangeFilter }) {
 
   return (
     <Collapse title='Price'>
-      <Slider range defaultValue={[20, 50]} min={0} max={500} onChange={onPriceChange}/>
+      <Slider range defaultValue={[0, 600]} min={0} max={600} onChange={onPriceChange}/>
     </Collapse>
   );
 }

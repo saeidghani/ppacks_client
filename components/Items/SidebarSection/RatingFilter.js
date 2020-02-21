@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Collapse from '../../../common/comps/Collapse';
 import { FilterOptions, RateWrapper, RatingRow } from '../../../styles/ItemsStyles/SidebarSectionStyles';
@@ -6,6 +6,16 @@ import { FilterOptions, RateWrapper, RatingRow } from '../../../styles/ItemsStyl
 import StyledRate from '../../../common/styled/StyledRate';
 
 function RatingFilter({ onRatingFilter }) {
+  const [ratingNum, setRatingNum] = useState(1);
+
+  const handleRatingFilter = (ratingNumber) => {
+    setRatingNum(ratingNum => ratingNumber );
+  };
+
+  useEffect(() => {
+    onRatingFilter(ratingNum);
+  }, [ratingNum]);
+
 
   const ratings = [
     {
@@ -42,7 +52,7 @@ function RatingFilter({ onRatingFilter }) {
     <Collapse title='Rating'>
       <FilterOptions>
         {ratings.map(rating =>
-          <RatingRow onClick={() => onRatingFilter(rating.number)} key={rating.number}>
+          <RatingRow selected={rating.number === ratingNum} onClick={() => handleRatingFilter(rating.number)} key={rating.number}>
             {rating.title} & Up
           </RatingRow>
         )}

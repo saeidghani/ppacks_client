@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import Scroll from 'react-scroll';
 
@@ -10,6 +10,7 @@ import { fetchBagDetails, fetchBagReviews, setItemsListDefaultFilter } from '../
 import Spinner from '../../common/comps/Spinner';
 import withErrorHandler from '../../common/hoc/withErrorHandler';
 import useDefaultFilter from '../../common/hooks/useDefaultFilter';
+import {itemsPage} from '../../common/urls';
 
 function Item({defaultFilter}) {
   const {categoryId, brandId, itemId} = defaultFilter;
@@ -42,7 +43,7 @@ function Item({defaultFilter}) {
 
   const breadcrumbOptions = [
     { title: 'Home', href: '/' },
-    { title: itemsFilter, href: '/itemsPage' },
+    { title: itemsFilter, href: itemsPage },
     { title: bag.title }
   ];
 
