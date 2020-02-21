@@ -1,5 +1,7 @@
-export const baseUrl = process.env.NODE_ENV === 'production' ?
-  'https://ppacks.now.sh' : '';
+// export const baseUrl = process.env.NODE_ENV === 'production' ?
+//   'https://ppacks.now.sh' : '';
+
+export const baseUrl = '';
 
 export const homePage = baseUrl + '/';
 export const itemPage = baseUrl + '/itemPage';
