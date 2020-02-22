@@ -33,7 +33,7 @@ export const Title = styled.h2`
 
 export const SelectedTabPaneContainer = styled.div`
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 25rem 1fr;
   grid-gap: 2rem;  
   height: 100%;
   justify-content: center;
@@ -66,6 +66,10 @@ export const PosterWrapper = styled.div`
   width: 100%;  
   height: 100%;  
  } 
+ 
+  @media(max-width: ${sm}){    
+    width: 100%;  
+ }
  
   @media(max-width: 470px){    
     background-color: ${({theme}) => theme.darkSecondaryColor};
