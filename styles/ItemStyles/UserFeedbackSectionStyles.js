@@ -115,6 +115,10 @@ export const ReviewError = styled.span`
 
 export const ReviewButtonFilled = styled(ButtonFilled)`
   margin-bottom: 1rem;
+  
+  &:hover{
+    transform: scale(1.05);
+  }
 `;
 
 export const ReviewButtonOutline = styled(ButtonOutline)`

@@ -32,9 +32,8 @@ function SelectedBagsByBrandSection() {
     });
   };
 
-  const {width} = useWindowSize();
 
-  const selectItems = (brandId, brandbags) => brandbags.map((bag, index) =>
+  const selectItems = (brandId, brandbags) => brandbags.map(bag =>
     <ItemCardWrapper key={bag._id} onClick={() => handleItemCardClick(brandId, bag._id)}>
       <ItemCard item={bag} />
     </ItemCardWrapper>);

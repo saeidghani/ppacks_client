@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
 import { Form, Icon, Input } from 'antd';
+import Scroll from 'react-scroll';
 import axios from 'axios';
 
 import { auth } from '../../store/actions';
@@ -11,6 +12,12 @@ import useErrorHandler from '../hooks/useErrorHandler';
 function SignInForm ({form, auth}) {
   const [error, errorConfirmedHandler] = useErrorHandler(axios);
   const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    const scroll = Scroll.animateScroll;
+    const scrollToTop = () => scroll.scrollTo(1, {smooth: true, duration: 1500,});
+    scrollToTop();
+  }, []);
 
   useEffect(() => {
     if(error) {
@@ -71,7 +78,7 @@ function SignInForm ({form, auth}) {
         <ButtonOutline type="primary" htmlType="submit" className="login-form-button" style={{lineHeight: '3rem'}}>
           Log in
         </ButtonOutline>
-        <span> Or </span>
+        <span>  Or </span>
         <LinkText href='/signUpPage'>
           register now!
         </LinkText>

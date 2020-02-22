@@ -11,7 +11,6 @@ const updateReviewSuccess = (updatedReview) => ({
 });
 
 export const updateReview = (reviewId, updatedReview) => async (dispatch, getState) => {
-  console.log(updatedReview);
   dispatch(httpStartAction(UPDATE_REVIEW_START));
   try {
     const token = getState().auth.token;
