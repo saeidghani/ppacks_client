@@ -37,7 +37,7 @@ function Item({defaultFilter}) {
     onSetItemsListDefaultFilter(defaultFilter);
     onFetchBagDetails(itemId);
     onFetchBagReviews(itemId);
-  }, [newReview, updatedReview, newRating, updatedRating, defaultFilterState]);
+  }, [defaultFilterState]);
 
   if(!bag) return <Spinner/>;
 

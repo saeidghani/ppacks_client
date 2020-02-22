@@ -29,7 +29,7 @@ function Items() {
 
   const { result: initialItems } = useFetchData(apiEndpoint);
   const {
-    handleFilterItems, setSortOptions, handleCategoryFilter,
+    handleFilterItems, handleSortOptions, handleCategoryFilter,
     handleBrandFilter, sortedItems, renderedItems,
     handlePageChange, pageSize, minValue,
     maxValue, currentPage
@@ -47,7 +47,7 @@ function Items() {
           onBrandFilter={filter => handleBrandFilter(filter)}
         />
         <GridItemsSection
-          onSort={setSortOptions}
+          onSort={sortOptions => handleSortOptions(sortOptions)}
           items={sortedItems || renderedItems}
           minValue={minValue}
           maxValue={maxValue}/>

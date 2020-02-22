@@ -19,28 +19,27 @@ function UserRating() {
   const bag = useSelector(state => state.bag.bagDetails.bag);
   const user = useSelector(state => state.auth.user);
   const bagReviews = useSelector(state => state.review.bagReviews.reviews);
-  const newRating = useSelector(state => state.rating.newRating.rating);
-  const [userPreviousReview, setUserPreviousReview] = useState(false);
-  const [userPreviousRating, setUserPreviousRating] = useState(false);
+  const [userReview, setUserReview] = useState(false);
+  const [userRating, setUserRating] = useState(false);
 
   useEffect(() => {
     if (user) {
-      const userPreviousReview = bagReviews && bagReviews.find(review =>
+      const userReview = bagReviews && bagReviews.find(review =>
         review.user._id === user._id
       );
-      if(userPreviousReview) {
-        setUserPreviousReview(userPreviousReview);
-        if(userPreviousReview.rating) {
-          setUserPreviousRating(userPreviousReview.rating);
+      if(userReview) {
+        setUserReview(userReview);
+        if(userReview.rating) {
+          setUserRating(userReview.rating);
         }
       }
     }
   }, [user, bagReviews]);
 
   const handleSetRating = value => {
-    if (userPreviousRating) {
+    if (userRating) {
       onUpdateRating(
-        userPreviousReview._id,
+        userReview._id,
         { rating: value }
       );
     } else {
@@ -49,20 +48,19 @@ function UserRating() {
         bag: bag._id,
         rating: value
       });
-      const newRatingCopy = { ...newRating };
-      setUserPreviousRating(newRatingCopy.rating);
     }
+      setUserRating(value);
   };
 
   const redirectToSignInPage = useRedirectToSignInPage(`${itemPage}?itemId=${bag._id}`);
 
   const renderUserRating = () => {
     if (user) {
-      if (userPreviousRating) {
+      if (userRating) {
         return (
           <UserRatingContainer>
-            <h3>Your rating: {Number(userPreviousRating).toFixed(1)}</h3>
-            <StyledRate allowHalf onChange={handleSetRating} value={userPreviousRating}/>
+            <h3>Your rating: {Number(userRating).toFixed(1)}</h3>
+            <StyledRate allowHalf onChange={handleSetRating} value={userRating}/>
           </UserRatingContainer>
         );
       } else {

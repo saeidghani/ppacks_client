@@ -17,7 +17,7 @@ function CartDrawer() {
   const onShowCartDrawer = () => dispatch(showCartDrawer());
   const cartDrawerVisibility = useSelector(state => state.cart.cartDrawerVisibility.visible);
   const user = useSelector(state => state.auth.user);
-  const redirectToSignInPage = useRedirectToSignInPage('/shippingPage');
+  const redirectToSignInPage = useRedirectToSignInPage(shippingPage);
 
   const {width} = useWindowSize();
 

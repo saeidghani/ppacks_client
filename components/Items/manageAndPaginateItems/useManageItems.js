@@ -21,8 +21,13 @@ export default function useManageItems(initialItems, defaultFilter) {
     filterItems(filters);
   };
 
+  const handleSortOptions = (sortOptions) => {
+    handlePageChange(1);
+    setSortOptions(sortOptions);
+  };
+
   return {
-    handleFilterItems, filterItems, setSortOptions, sortedItems, renderedItems, setRenderedItems,
+    handleFilterItems, filterItems, handleSortOptions, sortedItems, renderedItems, setRenderedItems,
     handlePageChange, pageSize, minValue, maxValue, currentPage
   };
 }
