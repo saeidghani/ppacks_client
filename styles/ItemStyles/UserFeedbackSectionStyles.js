@@ -34,8 +34,6 @@ export const ReviewsCount = styled.div`
    font-weight: 500;
 `;
 
-export const ReviewText = styled.div``;
-
 export const ReviewerContainer = styled.div`
   display: flex;
   flex-direction: column;

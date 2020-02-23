@@ -6,7 +6,7 @@ import {
   UserRatingContainer
 } from '../../../../../styles/ItemStyles/UserFeedbackSectionStyles';
 import StyledRate from '../../../../../common/styled/StyledRate';
-import { addRating, updateRating } from '../../../../../store/actions';
+import { addRating, updateRating, fetchBagReviews } from '../../../../../store/actions';
 import useRedirectToSignInPage from '../../../../../common/hooks/useRedirectToSignInPage';
 import withErrorHandler from '../../../../../common/hoc/withErrorHandler';
 import {itemPage} from '../../../../../common/urls';
@@ -16,16 +16,35 @@ function UserRating() {
   const dispatch = useDispatch();
   const onAddRating = newRating => dispatch(addRating(newRating));
   const onUpdateRating = (reviewId, updatedRating) => dispatch(updateRating(reviewId, updatedRating));
+  const onFetchBagReviews = bagId => dispatch(fetchBagReviews(bagId));
   const bag = useSelector(state => state.bag.bagDetails.bag);
   const user = useSelector(state => state.auth.user);
   const bagReviews = useSelector(state => state.review.bagReviews.reviews);
+  const newReview = useSelector(state => state.review.newReview.review);
+  const newRating = useSelector(state => state.rating.newRating.rating);
   const [userReview, setUserReview] = useState(false);
   const [userRating, setUserRating] = useState(false);
+  const [allReviews, setAllReviews] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      const userReview = bagReviews && bagReviews.find(review =>
-        review.user._id === user._id
+    if(bagReviews && bagReviews.length) {
+      setAllReviews(bagReviews)
+    }
+  }, [bagReviews]);
+
+  useEffect(() => {
+    if(newRating) {
+      setAllReviews(allReviews => [...allReviews, newRating])
+    }
+    if(newReview) {
+      setAllReviews(allReviews => [...allReviews, newReview])
+    }
+  }, [newRating, newReview]);
+
+  useEffect(() => {
+    if (user && allReviews && allReviews.length) {
+      const userReview = allReviews.find(review =>
+        ((review.user._id === user._id) || (review.user === user._id))
       );
       if(userReview) {
         setUserReview(userReview);
@@ -34,10 +53,10 @@ function UserRating() {
         }
       }
     }
-  }, [user, bagReviews]);
+  }, [user, allReviews]);
 
   const handleSetRating = value => {
-    if (userRating) {
+    if (userReview) {
       onUpdateRating(
         userReview._id,
         { rating: value }
@@ -48,8 +67,9 @@ function UserRating() {
         bag: bag._id,
         rating: value
       });
+      onFetchBagReviews(bag._id);
     }
-      setUserRating(value);
+    setUserRating(value);
   };
 
   const redirectToSignInPage = useRedirectToSignInPage(`${itemPage}?itemId=${bag._id}`);

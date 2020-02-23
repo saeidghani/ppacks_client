@@ -5,7 +5,7 @@ import {
   UserReviewContainer, ReviewButtonFilled, ReviewButtonOutline, ReviewError, S3
 } from '../../../../styles/ItemStyles/UserFeedbackSectionStyles';
 import { StyledInput } from '../../../../common/styled/StyledInput';
-import { addReview, updateReview } from '../../../../store/actions';
+import { addReview, updateReview, fetchBagReviews } from '../../../../store/actions';
 import useRedirectToSignInPage from '../../../../common/hooks/useRedirectToSignInPage';
 import withErrorHandler from '../../../../common/hoc/withErrorHandler';
 import {itemPage} from '../../../../common/urls';
@@ -15,7 +15,9 @@ function UserReview() {
   const dispatch = useDispatch();
   const onAddReview = newReview => dispatch(addReview(newReview));
   const onUpdateReview = (reviewId, updatedReview) => dispatch(updateReview(reviewId, updatedReview));
+  const onFetchBagReviews = bagId => dispatch(fetchBagReviews(bagId));
   const newReview = useSelector(state => state.review.newReview.review);
+  const newRating = useSelector(state => state.rating.newRating.rating);
   const bag = useSelector(state => state.bag.bagDetails.bag);
   const bagReviews = useSelector(state => state.review.bagReviews.reviews);
   const user = useSelector(state => state.auth.user);
@@ -23,18 +25,34 @@ function UserReview() {
   const [reviewText, setReviewText] = useState('');
   const [reviewTextError, setReviewTextError] = useState('');
   const [userPreviousReview, setUserPreviousReview] = useState(false);
+  const [allReviews, setAllReviews] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      const userPreviousReview = bagReviews && bagReviews.find(review =>
-        review.user._id === user._id
+    if(bagReviews && bagReviews.length) {
+      setAllReviews(bagReviews)
+    }
+  }, [bagReviews]);
+
+  useEffect(() => {
+   if(newRating) {
+    setAllReviews(allReviews => [...allReviews, newRating])
+   }
+    if(newReview) {
+      setAllReviews(allReviews => [...allReviews, newReview])
+    }
+  }, [newRating, newReview]);
+
+  useEffect(() => {
+    if (user && allReviews && allReviews.length) {
+      const userPreviousReview = allReviews.find(review =>
+        ((review.user._id === user._id) || (review.user === user._id))
       );
       setUserPreviousReview(userPreviousReview);
       if (userPreviousReview) {
         setReviewText(userPreviousReview.text);
       }
     }
-  }, [bagReviews]);
+  }, [user, allReviews]);
 
   const redirectToSignInPage = useRedirectToSignInPage(`${itemPage}?itemId=${bag._id}`);
 
@@ -50,24 +68,27 @@ function UserReview() {
           userPreviousReview._id,
           { text: reviewText }
         );
+        const updatedReview = { ...userPreviousReview };
+        updatedReview.text = reviewText;
+        setUserPreviousReview(updatedReview);
       } else {
         setReviewTextError('review can not be empty!');
       }
     } else {
       if (reviewText) {
         setReviewTextError('');
-        onAddReview({
+        const newReviewObj = {
           user: user._id,
           bag: bag._id,
           text: reviewText,
           helpfulBy: []
-        });
+        };
+        onAddReview(newReviewObj);
+        onFetchBagReviews(bag._id);
+        //setUserPreviousReview(newReviewCopy);
       } else {
         setReviewTextError('review can not be empty!');
       }
-
-      const newReviewCopy = { ...newReview };
-      setUserPreviousReview(newReviewCopy);
     }
   };
 

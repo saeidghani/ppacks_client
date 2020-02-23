@@ -18,6 +18,7 @@ export {fetchBagOrders} from './orderActions/fetchBagOrdersAction';
 export {addOrder} from './orderActions/addOrderAction';
 
 export {fetchBagReviews} from './reviewActions/fetchBagReviewsAction';
+export {removePrevBagReviews} from './reviewActions/fetchBagReviewsAction';
 export {addReview} from './reviewActions/addReviewAction';
 export {updateReview} from './reviewActions/updateReviewAction';
 

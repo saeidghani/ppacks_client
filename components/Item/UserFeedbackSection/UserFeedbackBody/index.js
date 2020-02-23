@@ -6,8 +6,7 @@ import * as Scroll from 'react-scroll';
 import {
   Review,
   ReviewsContainer,
-  ReviewsCount,
-  ReviewText
+  ReviewsCount
 } from '../../../../styles/ItemStyles/UserFeedbackSectionStyles';
 import Line from '../../../../common/styled/Line';
 import Pagination from '../../../../common/styled/Pagination';
@@ -17,6 +16,7 @@ import { fetchBagOrders } from '../../../../store/actions';
 import useManageAndPaginateItems from './manageAndPaginateItems/useManageAndPaginateItems';
 import Spinner from '../../../../common/comps/Spinner';
 import withErrorHandler from '../../../../common/hoc/withErrorHandler';
+import ReviewText from './ReviewText';
 
 
 function UserFeedbackBody() {
@@ -26,8 +26,22 @@ function UserFeedbackBody() {
   const onFetchBagOrders = (bagId) => dispatch(fetchBagOrders(bagId));
   const bagDetails = useSelector(state => state.bag.bagDetails.bag);
   const bagReviews = useSelector(state => state.review.bagReviews.reviews);
+  const newReview = useSelector(state => state.review.newReview.review);
   const [totalItems, setTotalItems] = useState(0);
   const [dateFormattedReviews, setDateFormattedReviews] = useState([]);
+  const [allReviews, setAllReviews] = useState([]);
+
+  useEffect(() => {
+    if(bagReviews && bagReviews.length) {
+      setAllReviews(bagReviews)
+    }
+  }, [bagReviews]);
+
+  useEffect(() => {
+    if(newReview) {
+      setAllReviews(allReviews => [...allReviews, newReview])
+    }
+  }, [newReview]);
 
   useEffect(() => {
     if (bagDetails) onFetchBagOrders(bagDetails._id);
@@ -36,16 +50,16 @@ function UserFeedbackBody() {
 
   useEffect(() => {
     let dateFormattedReviews = [];
-    bagReviews.map(review => {
-      const newReview = {...review};
-      newReview.createdAt = moment(review.createdAt).format('MMMM DD, YYYY');
-      dateFormattedReviews.push(newReview);
+    allReviews.map(review => {
+      const newReviewObj = {...review};
+      newReviewObj.createdAt = moment(review.createdAt).format('MMMM DD, YYYY');
+      dateFormattedReviews.push(newReviewObj);
     });
     setDateFormattedReviews(dateFormattedReviews);
-  }, [bagReviews]);
+  }, [allReviews]);
 
   const {
-    handleManageItems, managedItems, renderedItems,
+    handleManageItems, renderedItems,
     handlePageChange, pageSize, minValue, maxValue, currentPage
   } = useManageAndPaginateItems(dateFormattedReviews);
 
@@ -59,10 +73,10 @@ function UserFeedbackBody() {
           1-5 of {bagReviews.length} reviews
         </ReviewsCount>
         <ReviewsHeader onSort={filter => handleManageItems(filter)}/>
-        {(managedItems || renderedItems).slice(minValue, maxValue).map(review => review.text &&
+        {renderedItems.slice(minValue, maxValue).map(review => review.text &&
           <Review key={review._id}>
             <Reviewer review={review}/>
-            <ReviewText>{review.text}</ReviewText>
+            <ReviewText review={review} />
             <Line/>
           </Review>
         )}

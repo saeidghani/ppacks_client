@@ -7,6 +7,7 @@ import axios from 'axios';
 import { auth } from '../../store/actions';
 import {LinkText, ButtonOutline} from '../styled/Button';
 import useErrorHandler from '../hooks/useErrorHandler';
+import {signUpPage} from '../urls';
 
 
 function SignInForm ({form, auth}) {
@@ -79,7 +80,7 @@ function SignInForm ({form, auth}) {
           Log in
         </ButtonOutline>
         <span>  Or </span>
-        <LinkText href='/signUpPage'>
+        <LinkText href={signUpPage} >
           register now!
         </LinkText>
       </Form.Item>
