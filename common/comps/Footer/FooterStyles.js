@@ -14,9 +14,10 @@ export const FooterContainer = styled.div`
   }  
 `;
 
-export const LogoYear = styled.div` 
+export const LogoYear = styled.span` 
+  font-size: 1.4rem;
   margin-right: auto;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
 `;
 
 export const NavigationWrapper = styled.div` 

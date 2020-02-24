@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Link from 'next/link';
 import { Icon } from 'antd';
 
-import { ThankYouContainer, IconCheckWrapper, IconArrowLeftWrapper } from '../../styles/ThankYouStyles';
+import { ThankYouContainer, Text, IconCheckWrapper, IconArrowLeftWrapper } from '../../styles/ThankYouStyles';
 import { LinkFilled } from '../../common/styled/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../../store/actions';
@@ -25,9 +25,9 @@ function ThankYou() {
         <Icon type='check'/>
       </IconCheckWrapper>
       <h1>Thank You!</h1>
-      <p>You have successfully purchased our product,
+      <Text>You have successfully purchased our product,
         you will get an email containing the details of the purchase
-      </p>
+      </Text>
       <Link href='/'>
         <LinkFilled>
           <IconArrowLeftWrapper>

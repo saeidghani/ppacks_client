@@ -1,12 +1,16 @@
 import axios from 'axios';
 
-import { UPDATE_RATING_START, UPDATE_RATING_SUCCESS, UPDATE_RATING_FAIL } from '../../actionTypes';
+import { UPDATE_RATING_START, UPDATE_RATING_SUCCESS, UPDATE_RATING_FAIL, RESET_UPDATE_RATING } from '../../actionTypes';
 import { reviewApi, authorizationHeader } from '../../../common/api';
 import { httpStartAction, httpFailAction } from '../../../common/utils/storeUtils';
 
 const updateRatingSuccess = (updatedRating) => ({
   type: UPDATE_RATING_SUCCESS,
   updatedRating
+});
+
+export const resetUpdateRating = () => ({
+  type: RESET_UPDATE_RATING
 });
 
 export const updateRating = (reviewId, updatedRating) => async (dispatch, getState) => {

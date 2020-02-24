@@ -46,11 +46,9 @@ function UserRating() {
       const userReview = allReviews.find(review =>
         ((review.user._id === user._id) || (review.user === user._id))
       );
-      if(userReview) {
-        setUserReview(userReview);
-        if(userReview.rating) {
+      setUserReview(userReview);
+      if(userReview && userReview.rating) {
           setUserRating(userReview.rating);
-        }
       }
     }
   }, [user, allReviews]);

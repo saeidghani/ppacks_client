@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ADD_REVIEW_START, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAIL } from '../../actionTypes';
+import { ADD_REVIEW_START, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAIL, RESET_ADD_REVIEW } from '../../actionTypes';
 import { allReviewsApi, authorizationHeader } from '../../../common/api';
 import { httpStartAction, httpFailAction } from '../../../common/utils/storeUtils';
 
@@ -8,6 +8,10 @@ import { httpStartAction, httpFailAction } from '../../../common/utils/storeUtil
 const addReviewSuccess = (newReview) => ({
   type: ADD_REVIEW_SUCCESS,
   newReview
+});
+
+export const resetAddReview = () => ({
+  type: RESET_ADD_REVIEW
 });
 
 export const addReview = (newReview) => async (dispatch, getState) => {

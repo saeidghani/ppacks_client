@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_BAG_REVIEWS_START, FETCH_BAG_REVIEWS_SUCCESS, FETCH_BAG_REVIEWS_FAIL, REMOVE_PREV_BAG_REVIEWS } from '../../actionTypes';
+import { FETCH_BAG_REVIEWS_START, FETCH_BAG_REVIEWS_SUCCESS, FETCH_BAG_REVIEWS_FAIL, RESET_FETCH_BAG_REVIEWS } from '../../actionTypes';
 import { getReviewsByBagIdApi } from '../../../common/api';
 import { httpStartAction, httpFailAction } from '../../../common/utils/storeUtils';
 
@@ -10,8 +10,8 @@ const fetchBagReviewsSuccess = (bagReviews) => ({
   bagReviews
 });
 
-export const removePrevBagReviews = () => ({
-  type: REMOVE_PREV_BAG_REVIEWS
+export const resetBagReviews = () => ({
+  type: RESET_FETCH_BAG_REVIEWS
 });
 
 export const fetchBagReviews = (bagId) => async dispatch => {

@@ -5,6 +5,11 @@ export const ThankYouContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 3rem 3rem 7rem 3rem;
+`;
+
+export const Text = styled.p`
+  text-align: center;
 `;
 
 export const IconCheckWrapper = styled.div`

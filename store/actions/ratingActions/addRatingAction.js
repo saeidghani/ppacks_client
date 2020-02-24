@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { ADD_RATING_START, ADD_RATING_SUCCESS, ADD_RATING_FAIL } from '../../actionTypes';
+import {
+  ADD_RATING_START,
+  ADD_RATING_SUCCESS,
+  ADD_RATING_FAIL,
+  RESET_ADD_RATING
+} from '../../actionTypes';
 import { allReviewsApi, authorizationHeader } from '../../../common/api';
 import { httpStartAction, httpFailAction } from '../../../common/utils/storeUtils';
 
@@ -8,6 +13,10 @@ import { httpStartAction, httpFailAction } from '../../../common/utils/storeUtil
 const addRatingSuccess = (newRating) => ({
   type: ADD_RATING_SUCCESS,
   newRating
+});
+
+export const resetAddRating = () => ({
+  type: RESET_ADD_RATING
 });
 
 export const addRating = (newRating) => async (dispatch, getState) => {

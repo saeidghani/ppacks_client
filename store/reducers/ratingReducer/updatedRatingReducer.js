@@ -1,4 +1,4 @@
-import { UPDATE_RATING_START, UPDATE_RATING_SUCCESS, UPDATE_RATING_FAIL } from '../../actionTypes';
+import { UPDATE_RATING_START, UPDATE_RATING_SUCCESS, UPDATE_RATING_FAIL, RESET_UPDATE_RATING } from '../../actionTypes';
 import {updateObject, httpStart, httpFail} from '../../../common/utils/storeUtils';
 
 
@@ -12,6 +12,14 @@ const initialState = {
 const updateRatingSuccess = (state, action) => {
   return updateObject( state, {
     rating: action.updatedRating,
+    error: null,
+    loading: false
+  } );
+};
+
+export const resetUpdateRating = (state, action) => {
+  return updateObject( state, {
+    rating: null,
     error: null,
     loading: false
   } );

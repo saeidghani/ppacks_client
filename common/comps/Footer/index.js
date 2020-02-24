@@ -7,7 +7,7 @@ import Navigation from '../Navigation';
 function Footer() {
   return (
     <FooterContainer>
-      <LogoYear>@PPACKS 2020</LogoYear>
+      <LogoYear>@PPACKS</LogoYear>
       <NavigationWrapper>
         <Navigation/>
       </NavigationWrapper>

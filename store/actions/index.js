@@ -17,13 +17,12 @@ export {fetchBagDetails} from './bagActions/fetchBagDetailsAction';
 export {fetchBagOrders} from './orderActions/fetchBagOrdersAction';
 export {addOrder} from './orderActions/addOrderAction';
 
-export {fetchBagReviews} from './reviewActions/fetchBagReviewsAction';
-export {removePrevBagReviews} from './reviewActions/fetchBagReviewsAction';
-export {addReview} from './reviewActions/addReviewAction';
-export {updateReview} from './reviewActions/updateReviewAction';
+export {fetchBagReviews, resetBagReviews} from './reviewActions/fetchBagReviewsAction';
+export {addReview, resetAddReview} from './reviewActions/addReviewAction';
+export {updateReview, resetUpdateReview} from './reviewActions/updateReviewAction';
 
-export {addRating} from './ratingActions/addRatingAction';
-export {updateRating} from './ratingActions/updateRatingAction';
+export {addRating, resetAddRating} from './ratingActions/addRatingAction';
+export {updateRating, resetUpdateRating} from './ratingActions/updateRatingAction';
 
 export {addToCart, checkCartState} from './cartActions/addToCartAction';
 export {removeFromCart} from './cartActions/removeFromCartAction';

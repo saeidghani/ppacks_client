@@ -7,9 +7,6 @@ const SocialNetworksContainer = styled.div`
   align-items: center;
   padding-top: 1rem;
   margin-left: auto;
-  & > * {
-   //margin-right: 0.5rem;
-  }
 `;
 
 

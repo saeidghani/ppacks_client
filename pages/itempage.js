@@ -2,7 +2,7 @@ import React from "react";
 
 import Item from '../components/Item';
 import { useRouter } from 'next/router';
-import { setItemsListDefaultFilter, removePrevBagReviews } from '../store/actions';
+import { setItemsListDefaultFilter, resetBagReviews, resetAddRating, resetUpdateRating, resetAddReview, resetUpdateReview } from '../store/actions';
 
 
 function ItemPage(){
@@ -21,7 +21,11 @@ ItemPage.getInitialProps = ({store, query}) => {
   const {shopAll, shopOnSale, categoryId, brandId, itemId} = query;
   const defaultFilter = {shopAll, shopOnSale, categoryId, brandId, itemId};
   store.dispatch(setItemsListDefaultFilter(defaultFilter));
-  store.dispatch(removePrevBagReviews());
+  store.dispatch(resetBagReviews());
+  store.dispatch(resetAddRating());
+  store.dispatch(resetUpdateRating());
+  store.dispatch(resetAddReview());
+  store.dispatch(resetUpdateReview());
 };
 
 export default ItemPage;
