@@ -1,6 +1,6 @@
 /* eslint-disable */
-const less = require('@zeit/next-less');
 const css = require('@zeit/next-css');
+const less = require('@zeit/next-less');
 const lessToJS = require('less-vars-to-js');
 const fs = require('fs');
 const path = require('path');
