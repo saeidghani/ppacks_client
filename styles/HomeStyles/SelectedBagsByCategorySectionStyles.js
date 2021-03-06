@@ -23,7 +23,7 @@ export const SelectedBagsByCategoryContainer = styled.div`
 
 export const Title = styled.h2`
   width: 20rem;
-  border-bottom: 1px solid ${({theme}) => theme.tertiaryColor};
+  border-bottom: 1px solid lightgray;
   
   @media(max-width: ${xs}) {  
    margin-left: 2rem;
